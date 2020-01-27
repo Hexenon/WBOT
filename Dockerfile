@@ -1,10 +1,13 @@
 FROM ubuntu:18
 USER root
 RUN apt-get update
-RUN apt-get -y install curl gnupg
-RUN curl -sL https://deb.nodesource.com/setup_12.x  | bash -
+RUN apt-get -y install curl gnupg=
+RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 RUN apt-get -y install nodejs
 RUN apt-get install nginx
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
+RUN service nginx reload
 
 WORKDIR /home/app
 

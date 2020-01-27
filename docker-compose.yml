@@ -8,3 +8,5 @@ services:
       - ./nginx:/var/log/nginx
     ports:
       - 1337:80
+  bot: 
+    build: .
